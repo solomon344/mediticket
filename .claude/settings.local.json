@@ -8,7 +8,19 @@
       "Read(//c/Users/Musbi Dev/Documents/**)",
       "Bash(npx create-next-app@latest mediticket --typescript --tailwind --app --no-src-dir --no-eslint --import-alias \"@/*\")",
       "Bash(npm install *)",
-      "Bash(npx prisma *)"
+      "Bash(npx prisma *)",
+      "Bash(gh auth *)",
+      "Bash(mkdir -p \"/c/Users/Musbi Dev/Documents/mediticket/components\")",
+      "Bash(mkdir -p \"/c/Users/Musbi Dev/Documents/mediticket/app/\\(dashboard\\)/ticket-types\")",
+      "Bash(mkdir -p \"/c/Users/Musbi Dev/Documents/mediticket/app/\\(dashboard\\)/payment-methods\")",
+      "Bash(mkdir -p \"/c/Users/Musbi Dev/Documents/mediticket/app/\\(dashboard\\)/purchase-history\")",
+      "Bash(mkdir -p \"/c/Users/Musbi Dev/Documents/mediticket/app/\\(dashboard\\)/settings\")",
+      "Bash(node -e \"const s = require\\('/c/Users/Musbi Dev/Documents/mediticket/node_modules/@heroui/styles/dist/index.js'\\); const bv = s.buttonVariants; if\\(bv\\) { const r = bv\\({variant: 'x'}\\); console.log\\(Object.keys\\(bv.variantsClassNames || bv._def?.variants || {}\\)\\); } else console.log\\('not found'\\)\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Musbi Dev\\Documents\\mediticket\\app\\api\\auth\\[...all",
+      "C:\\Users\\Musbi Dev\\Documents\\mediticket\\app\\api\\ticket-types",
+      "C:\\Users\\Musbi Dev\\Documents\\mediticket\\app\\api"
     ]
   }
 }
