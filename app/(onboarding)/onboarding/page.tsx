@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 function Spinner() {
   return (
@@ -84,12 +85,7 @@ export default function OnboardingPage() {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-sm p-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12 rounded-xl bg-[#1a7f8a] flex items-center justify-center flex-shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M3 9L12 2L21 9V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M9 22V12H15V22" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </div>
+          <Image src="/logo.svg" alt="MediTicket" width={130} height={42} className="h-10 w-auto flex-shrink-0" />
           <div>
             <h1 className="text-xl font-bold text-gray-900">Set Up Your Hospital</h1>
             <p className="text-sm text-gray-500">Complete your organization profile to continue</p>

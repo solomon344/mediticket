@@ -11,6 +11,9 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Medic Ticket",
   description: "Hospital & Clinic Ticketing System — The Gambia",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

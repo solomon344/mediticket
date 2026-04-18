@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import modempayLogo from "@/images/modempay.png";
 
 type PaymentType = "WAVE" | "QMONEY" | "APS" | "AFRIMONEY" | "YONNA";
 
@@ -517,6 +519,25 @@ export default function PaymentMethodsPage() {
               </div>
             </div>
           </div>
+
+          {/* Powered by ModemPay */}
+          <a
+            href="https://modempay.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2.5 bg-white border border-gray-100 rounded-2xl px-4 py-3 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group"
+          >
+            <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
+              Powered by
+            </span>
+            <Image
+              src={modempayLogo}
+              alt="ModemPay"
+              width={90}
+              height={28}
+              className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+            />
+          </a>
         </div>
       </div>
     </div>

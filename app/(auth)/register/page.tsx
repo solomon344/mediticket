@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { signUp, signIn } from "@/lib/auth-client";
 
 function Field({
@@ -99,13 +100,8 @@ export default function RegisterPage() {
     <div className="min-h-screen flex bg-[#f0f4f5]">
       {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 flex-col p-10 overflow-hidden">
-        <Link href="/login" className="flex items-center gap-2 text-[#1a7f8a] font-semibold text-lg w-fit">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-            <path d="M8 3H16V6H8V3Z" stroke="currentColor" strokeWidth="2" fill="none" />
-            <path d="M12 10V16M9 13H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          Medic Ticket
+        <Link href="/login">
+          <Image src="/logo.svg" alt="MediTicket" width={130} height={42} className="h-10 w-auto" />
         </Link>
         <div className="mt-16">
           <p className="text-xs font-semibold tracking-[0.2em] text-[#1a7f8a] uppercase mb-4">The Clinical Sanctuary</p>
@@ -118,10 +114,7 @@ export default function RegisterPage() {
         </div>
         <div className="mt-auto relative rounded-2xl overflow-hidden shadow-xl">
           <div className="w-full h-64 bg-gradient-to-br from-[#8ec5c8] via-[#b8d8db] to-[#d4eaec] flex items-center justify-center">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" className="opacity-30">
-              <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="white" strokeWidth="2" />
-              <path d="M9 22V12H15V22" stroke="white" strokeWidth="2" />
-            </svg>
+            <Image src="/logo.svg" alt="MediTicket" width={200} height={64} className="h-20 w-auto" />
           </div>
           <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm px-5 py-4 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-[#1a7f8a] flex items-center justify-center flex-shrink-0">
@@ -138,13 +131,8 @@ export default function RegisterPage() {
       {/* Right panel */}
       <div className="w-full lg:w-1/2 flex flex-col justify-between bg-white px-8 sm:px-14 py-10">
         <div className="lg:hidden mb-8">
-          <Link href="/login" className="flex items-center gap-2 text-[#1a7f8a] font-semibold text-lg w-fit">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-              <path d="M8 3H16V6H8V3Z" stroke="currentColor" strokeWidth="2" fill="none" />
-              <path d="M12 10V16M9 13H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            Medic Ticket
+          <Link href="/login">
+            <Image src="/logo.svg" alt="MediTicket" width={130} height={42} className="h-10 w-auto" />
           </Link>
         </div>
 

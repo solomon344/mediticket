@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -6,9 +7,7 @@ export default function LandingPage() {
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="font-extrabold text-xl text-gray-900">
-            Medi<span className="text-[#1a9ea8]">Ticket</span>
-          </span>
+          <Image src="/logo.svg" alt="MediTicket" width={140} height={45} className="h-10 w-auto" />
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             <a href="#" className="hover:text-[#1a9ea8] transition-colors">Home</a>
             <a href="#how-it-works" className="hover:text-[#1a9ea8] transition-colors">How It Works</a>
@@ -380,9 +379,7 @@ export default function LandingPage() {
       <footer className="bg-gray-900 text-gray-400">
         <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
-            <p className="text-white font-extrabold text-lg mb-3">
-              Medi<span className="text-[#1a9ea8]">Ticket</span>
-            </p>
+            <Image src="/logo.svg" alt="MediTicket" width={130} height={42} className="h-10 w-auto mb-3" />
             <p className="text-xs leading-relaxed max-w-xs">
               Built at Let&apos;s Vibe Civic AI Hackathon, Disruptive Lab, Fajara, The Gambia. Improving patient care through technology.
             </p>
