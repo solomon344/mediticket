@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:heroui.com)",
+      "WebFetch(domain:better-auth.com)",
+      "WebFetch(domain:www.prisma.io)",
+      "Read(//c/Users/Musbi Dev/Documents/**)",
+      "Bash(npx create-next-app@latest mediticket --typescript --tailwind --app --no-src-dir --no-eslint --import-alias \"@/*\")"
+    ]
+  }
+}
