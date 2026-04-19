@@ -186,6 +186,8 @@ export const TicketPurchaseScalarFieldEnum = {
   amount: 'amount',
   status: 'status',
   transactionRef: 'transactionRef',
+  notes: 'notes',
+  source: 'source',
   ticketTypeId: 'ticketTypeId',
   paymentMethodId: 'paymentMethodId',
   organizationId: 'organizationId',
