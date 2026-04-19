@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
       status: p.status,
       transactionRef: p.transactionRef,
       ticketType: p.ticketType.name,
-      paymentMethod: p.paymentMethod.type,
+      paymentMethod: p.paymentMethod?.type ?? null,
       purchasedAt: p.purchasedAt.toISOString(),
     })),
     pagination: { page, limit, total, pages: Math.ceil(total / limit) },

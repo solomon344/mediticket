@@ -131,10 +131,12 @@ model TicketPurchase {
   amount          Decimal        @db.Decimal(10, 2)
   status          PurchaseStatus @default(PENDING)
   transactionRef  String?        @unique
+  notes           String?
+  source          PurchaseSource @default(ONLINE)
   ticketTypeId    String
   ticketType      TicketType     @relation(fields: [ticketTypeId], references: [id])
-  paymentMethodId String
-  paymentMethod   PaymentMethod  @relation(fields: [paymentMethodId], references: [id])
+  paymentMethodId String?
+  paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
   organizationId  String
   organization    Organization   @relation(fields: [organizationId], references: [id])
   purchasedAt     DateTime       @default(now())
@@ -145,6 +147,7 @@ model TicketPurchase {
   @@index([paymentMethodId])
   @@index([status])
   @@index([purchasedAt])
+  @@index([source])
 }
 
 enum PurchaseStatus {
@@ -152,4 +155,9 @@ enum PurchaseStatus {
   COMPLETED
   FAILED
   REFUNDED
+}
+
+enum PurchaseSource {
+  ONLINE
+  WALKIN
 }

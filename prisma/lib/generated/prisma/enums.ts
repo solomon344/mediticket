@@ -28,3 +28,11 @@ export const PurchaseStatus = {
 } as const
 
 export type PurchaseStatus = (typeof PurchaseStatus)[keyof typeof PurchaseStatus]
+
+
+export const PurchaseSource = {
+  ONLINE: 'ONLINE',
+  WALKIN: 'WALKIN'
+} as const
+
+export type PurchaseSource = (typeof PurchaseSource)[keyof typeof PurchaseSource]
