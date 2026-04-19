@@ -45,10 +45,10 @@ export async function GET(req: NextRequest) {
   const results = { sent: 0, failed: 0, errors: [] as string[] };
 
   for (const purchase of purchases) {
-    const network = NETWORK_MAP[purchase.paymentMethod.type];
+    const network = NETWORK_MAP[purchase?.paymentMethod?.type ?? ""] ?? null;
     if (!network) {
       results.failed++;
-      results.errors.push(`${purchase.id}: unknown network ${purchase.paymentMethod.type}`);
+      results.errors.push(`${purchase.id}: unknown network ${purchase?.paymentMethod?.type}`);
       continue;
     }
 
@@ -63,8 +63,8 @@ export async function GET(req: NextRequest) {
         body: JSON.stringify({
           amount: Number(purchase.amount),
           currency: "GMD",
-          recipient_phone: purchase.paymentMethod.accountNumber,
-          beneficiary_name: purchase.paymentMethod.accountName,
+          recipient_phone: purchase?.paymentMethod?.accountNumber,
+          beneficiary_name: purchase?.paymentMethod?.accountName,
           network,
           transfer_note: `Ticket payout — ${purchase.ticketType.name} — ${purchase.organization.name}`,
           metadata: { purchase_id: purchase.id },
