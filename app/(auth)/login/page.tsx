@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { signIn } from "@/lib/auth-client";
 
 function Spinner() {
@@ -94,15 +95,8 @@ export default function LoginPage() {
       <div className="relative z-10 flex flex-col items-center w-full px-4">
         {/* Header */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#1a7f8a] flex items-center justify-center mb-4 shadow-lg">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect x="4" y="8" width="20" height="16" rx="2" stroke="white" strokeWidth="2" fill="none" />
-              <path d="M10 4H18V8H10V4Z" stroke="white" strokeWidth="2" fill="none" />
-              <path d="M14 13V19M11 16H17" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </div>
+          <Image src="/logo.svg" alt="MediTicket" width={160} height={52} className="h-14 w-auto mb-2" />
           <p className="text-[11px] font-semibold tracking-[0.2em] text-[#1a7f8a] uppercase mb-1">The Clinical Sanctuary</p>
-          <h1 className="text-4xl font-bold text-gray-900 mb-1">Medic Ticket</h1>
           <p className="text-sm text-gray-500">Administrative Access Gateway</p>
         </div>
 

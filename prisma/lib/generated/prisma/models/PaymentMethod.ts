@@ -419,9 +419,9 @@ export type PaymentMethodMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type PaymentMethodScalarRelationFilter = {
-  is?: Prisma.PaymentMethodWhereInput
-  isNot?: Prisma.PaymentMethodWhereInput
+export type PaymentMethodNullableScalarRelationFilter = {
+  is?: Prisma.PaymentMethodWhereInput | null
+  isNot?: Prisma.PaymentMethodWhereInput | null
 }
 
 export type PaymentMethodCreateNestedManyWithoutOrganizationInput = {
@@ -476,10 +476,12 @@ export type PaymentMethodCreateNestedOneWithoutPurchasesInput = {
   connect?: Prisma.PaymentMethodWhereUniqueInput
 }
 
-export type PaymentMethodUpdateOneRequiredWithoutPurchasesNestedInput = {
+export type PaymentMethodUpdateOneWithoutPurchasesNestedInput = {
   create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPurchasesInput, Prisma.PaymentMethodUncheckedCreateWithoutPurchasesInput>
   connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPurchasesInput
   upsert?: Prisma.PaymentMethodUpsertWithoutPurchasesInput
+  disconnect?: Prisma.PaymentMethodWhereInput | boolean
+  delete?: Prisma.PaymentMethodWhereInput | boolean
   connect?: Prisma.PaymentMethodWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentMethodUpdateToOneWithWhereWithoutPurchasesInput, Prisma.PaymentMethodUpdateWithoutPurchasesInput>, Prisma.PaymentMethodUncheckedUpdateWithoutPurchasesInput>
 }

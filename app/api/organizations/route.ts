@@ -23,6 +23,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Name, email, and phone are required" }, { status: 400 });
   }
 
+  const emailTaken = await prisma.organization.findUnique({
+    where: { email: email.trim().toLowerCase() },
+    select: { id: true },
+  });
+  if (emailTaken) {
+    return NextResponse.json({ error: "An organization with this email already exists" }, { status: 409 });
+  }
+
   const organization = await prisma.organization.create({
     data: {
       name: name.trim(),

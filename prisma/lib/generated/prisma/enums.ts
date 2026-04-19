@@ -29,3 +29,30 @@ export const PurchaseStatus = {
 } as const
 
 export type PurchaseStatus = (typeof PurchaseStatus)[keyof typeof PurchaseStatus]
+
+
+export const PurchaseSource = {
+  ONLINE: 'ONLINE',
+  WALKIN: 'WALKIN'
+} as const
+
+export type PurchaseSource = (typeof PurchaseSource)[keyof typeof PurchaseSource]
+
+
+export const ConsultationSeverity = {
+  CRITICAL: 'CRITICAL',
+  MODERATE: 'MODERATE',
+  MILD: 'MILD'
+} as const
+
+export type ConsultationSeverity = (typeof ConsultationSeverity)[keyof typeof ConsultationSeverity]
+
+
+export const ConsultationStatus = {
+  PENDING: 'PENDING',
+  IN_REVIEW: 'IN_REVIEW',
+  APPROVED: 'APPROVED',
+  REFERRED: 'REFERRED'
+} as const
+
+export type ConsultationStatus = (typeof ConsultationStatus)[keyof typeof ConsultationStatus]
