@@ -39,9 +39,9 @@ export default function BookPage() {
 
   // Booking modal
   const [modal, setModal] = useState<BookingModal | null>(null);
-  const [form, setForm] = useState({ name: "", phone: "", email: "", paymentMethodId: "" });
+  const [form, setForm] = useState({ name: "", phone: "", smsPhone: "", email: "", paymentMethodId: "" });
   const [booking, setBooking] = useState(false);
-  const [booked, setBooked] = useState<{ id: string } | null>(null);
+  const [booked, setBooked] = useState<{ id: string; paymentLink: string } | null>(null);
   const [bookError, setBookError] = useState("");
 
   useEffect(() => {
@@ -190,6 +190,7 @@ export default function BookPage() {
     setForm({
       name: patientName || "",
       phone: "",
+      smsPhone: "",
       email: "",
       paymentMethodId: hospital.paymentMethods[0]?.id ?? "",
     });
@@ -200,6 +201,7 @@ export default function BookPage() {
   async function submitBooking() {
     if (!modal) return;
     if (!form.name || !form.phone) { setBookError("Name and phone are required."); return; }
+    if (!form.smsPhone) { setBookError("SMS number is required to receive your ticket ID."); return; }
     setBooking(true);
     setBookError("");
     try {
@@ -209,6 +211,7 @@ export default function BookPage() {
         body: JSON.stringify({
           buyerName: form.name,
           buyerPhone: form.phone,
+          smsPhone: form.smsPhone,
           buyerEmail: form.email || undefined,
           ticketTypeId: modal.ticket.id,
           paymentMethodId: form.paymentMethodId || undefined,
@@ -217,7 +220,7 @@ export default function BookPage() {
       });
       const data = await res.json();
       if (!res.ok) setBookError(data.error ?? "Booking failed.");
-      else setBooked(data.booking);
+      else setBooked({ id: data.booking.id, paymentLink: data.paymentLink });
     } catch { setBookError("Network error. Please try again."); }
     finally { setBooking(false); }
   }
@@ -444,19 +447,28 @@ export default function BookPage() {
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
             {booked ? (
               <div className="p-8 text-center">
-                <div className="w-16 h-16 rounded-full bg-green-50 border-2 border-green-200 flex items-center justify-center mx-auto mb-4">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 6L9 17l-5-5" />
+                <div className="w-16 h-16 rounded-full bg-amber-50 border-2 border-amber-200 flex items-center justify-center mx-auto mb-4">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20M2 12h20" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">Booking Confirmed!</h3>
-                <p className="text-sm text-gray-500 mb-4">Show this reference at the front desk.</p>
-                <div className="bg-gray-50 rounded-xl px-4 py-3 mb-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Complete Your Payment</h3>
+                <p className="text-sm text-gray-500 mb-4">Your booking is reserved. Tap the button below to pay and confirm your ticket.</p>
+                <div className="bg-gray-50 rounded-xl px-4 py-3 mb-4">
                   <p className="text-[11px] text-gray-400 mb-1">Booking Reference</p>
                   <p className="font-mono text-sm font-bold text-gray-900 break-all">{booked.id}</p>
                 </div>
-                {consultationId && <p className="text-xs text-[#1a9ea8] mb-5">✓ Your AI symptom summary has been sent to the hospital.</p>}
-                <button type="button" onClick={() => setModal(null)} className="w-full bg-[#1a9ea8] hover:bg-[#157f88] text-white font-semibold rounded-xl py-3 text-sm transition-colors">Done</button>
+                <p className="text-xs text-gray-400 mb-5">Your ticket ID will be sent via SMS once payment is confirmed.</p>
+                {consultationId && <p className="text-xs text-[#1a9ea8] mb-4">✓ AI symptom summary will be attached to your booking.</p>}
+                <a
+                  href={booked.paymentLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-[#1a9ea8] hover:bg-[#157f88] text-white font-semibold rounded-xl py-3 text-sm transition-colors mb-3"
+                >
+                  Pay Now →
+                </a>
+                <button type="button" onClick={() => setModal(null)} className="w-full border border-gray-200 text-gray-600 font-semibold rounded-xl py-3 text-sm hover:bg-gray-50 transition-colors">Close</button>
               </div>
             ) : (
               <>
